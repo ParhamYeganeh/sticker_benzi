@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d0616">
+  <meta name="robots" content="noindex, nofollow">
+  <title>پنل مدیریت | استیکر بنزی</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="../img/favicon-64.png?v=3">
+  <link rel="alternate icon" type="image/svg+xml" href="../img/logo.svg?v=3">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/Vazirmatn-font-face.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css">
+
+<!-- Cropper.js 1.6.2 -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.css"
+>
+
+<link rel="stylesheet" href="../admin/admin.css">
+
+<!-- Cropper.js Library -->
+<script
+  src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.js"
+  defer
+></script>
+
+<!-- Admin Application -->
+<script src="../js/demo-data.js"></script>
+<script src="../js/demo-api.js"></script>
+<script src="../admin/admin.js" defer></script>
+
+  <link rel="stylesheet" href="../css/demo.css">
+</head>
+<body class="admin-body">
+  <div class="demo-ribbon">نسخه نمایشی استیکر بنزی · اطلاعات و تغییرات فقط در همین مرورگر ذخیره می‌شوند</div>
+  <main id="app" class="admin-app">
+    <section id="loading-screen" class="state-screen" aria-live="polite">
+      <div class="loader"></div>
+      <p>در حال بررسی وضعیت ورود...</p>
+    </section>
+
+    <section id="login-screen" class="login-layout" hidden>
+      <div class="login-brand-panel">
+        <img src="../img/logo.webp" alt="لوگوی استیکر بنزی" class="login-logo">
+        <span class="eyebrow">STICKER BENZI</span>
+        <h1>مدیریت فروشگاه</h1>
+        <p>محصولات، تصاویر، قیمت‌ها و اطلاعات ارتباطی فروشگاه را از یکجا مدیریت کنید.</p>
+        <div class="login-decoration" aria-hidden="true">✦</div>
+      </div>
+      <div class="login-form-panel">
+        <form id="login-form" class="login-card" autocomplete="on">
+          <div class="mobile-brand"><img src="../img/logo.webp" alt=""><strong>استیکر بنزی</strong></div>
+          <span class="eyebrow">ADMINISTRATION</span>
+          <h2>ورود به پنل مدیریت</h2>
+          <p class="muted">نسخه نمایشی: نام کاربری <b dir="ltr">demo</b> و رمز عبور <b dir="ltr">demo1234</b></p>
+          <label class="field-label" for="login-username">نام کاربری</label>
+          <input id="login-username" name="username" type="text" autocomplete="username" maxlength="64" required placeholder="نام کاربری مدیر" value="demo">
+          <label class="field-label" for="login-password">رمز عبور</label>
+          <div class="password-field">
+            <input id="login-password" name="password" type="password" autocomplete="current-password" required placeholder="رمز عبور" value="demo1234">
+            <button class="password-toggle" id="password-toggle" type="button" aria-label="نمایش رمز عبور" aria-pressed="false">
+              <i class="ri-eye-line" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div id="login-message" class="notice" role="alert" hidden></div>
+          <button class="btn btn-primary btn-block" type="submit" id="login-submit"><i class="ri-login-box-line" aria-hidden="true"></i> ورود به پنل</button>
+          <a class="back-link" href="../index.html">بازگشت به فروشگاه</a>
+        </form>
+      </div>
+    </section>
+
+    <section id="dashboard-screen" class="dashboard-layout" hidden>
+      <aside class="sidebar" id="sidebar">
+        <a class="sidebar-brand" href="index.html">
+          <img src="../img/logo.webp" alt="">
+          <span><strong>استیکر بنزی</strong><small>مدیریت فروشگاه</small></span>
+        </a>
+        <nav class="side-nav" aria-label="منوی مدیریت">
+          <button class="nav-link active" type="button" data-view="overview"><span class="nav-icon"><i class="ri-dashboard-3-line" aria-hidden="true"></i></span> نمای کلی</button>
+          <button class="nav-link" type="button" data-view="products"><span class="nav-icon"><i class="ri-sticky-note-2-line" aria-hidden="true"></i></span> مدیریت محصولات</button>
+          <button class="nav-link" type="button" data-view="analytics"><span class="nav-icon"><i class="ri-bar-chart-box-line" aria-hidden="true"></i></span> آمار و گزارش‌ها</button>
+          <button class="nav-link" type="button" data-view="categories"><span class="nav-icon"><i class="ri-price-tag-3-line" aria-hidden="true"></i></span> مدیریت دسته‌بندی‌ها</button>
+          <button class="nav-link" type="button" data-view="settings"><span class="nav-icon"><i class="ri-settings-3-line" aria-hidden="true"></i></span> تنظیمات فروشگاه</button>
+        </nav>
+        <div class="sidebar-bottom">
+          <a class="store-link" href="../index.html" target="_blank" rel="noopener"><i class="ri-external-link-line" aria-hidden="true"></i> مشاهده فروشگاه</a>
+          <button id="logout-button" class="logout-button" type="button"><i class="ri-logout-box-r-line" aria-hidden="true"></i> خروج از حساب</button>
+        </div>
+      </aside>
+
+      <div class="dashboard-main">
+        <header class="topbar">
+          <button id="mobile-menu-button" class="mobile-menu-button" type="button" aria-label="باز کردن منو" aria-expanded="false"><i class="ri-menu-3-line" aria-hidden="true"></i></button>
+          <div><span class="topbar-kicker">STICKER BENZI / ADMIN</span><h1 id="page-title">نمای کلی</h1></div>
+          <div class="admin-user"><span class="user-avatar">ب</span><span><strong id="admin-username">مدیر</strong><small>مدیر فروشگاه</small></span></div>
+        </header>
+
+        <div id="global-message" class="global-message" role="status" aria-live="polite" hidden></div>
+
+        <section id="view-overview" class="view-section">
+          <div class="welcome-row">
+            <div><h2>خوش آمدید 👋</h2><p class="muted">وضعیت محصولات فروشگاه را در یک نگاه ببینید.</p></div>
+            <button class="btn btn-primary" type="button" data-action="add-product"><i class="ri-add-line" aria-hidden="true"></i> افزودن محصول</button>
+          </div>
+          <div class="stats-grid">
+            <article class="stat-card"><span class="stat-icon purple"><i class="ri-sticky-note-2-line" aria-hidden="true"></i></span><div><span class="stat-label">کل محصولات</span><strong id="stat-total">—</strong></div></article>
+            <article class="stat-card"><span class="stat-icon green"><i class="ri-checkbox-circle-line" aria-hidden="true"></i></span><div><span class="stat-label">محصولات فعال</span><strong id="stat-active">—</strong></div></article>
+            <article class="stat-card"><span class="stat-icon amber"><i class="ri-eye-off-line" aria-hidden="true"></i></span><div><span class="stat-label">محصولات غیرفعال</span><strong id="stat-inactive">—</strong></div></article>
+          </div>
+          <article class="panel-card recent-card">
+            <div class="panel-heading"><div><h3>آخرین محصولات</h3><p class="muted">نمایش بخشی از محصولات ثبت‌شده</p></div><button class="text-button" type="button" data-view="products">مشاهده همه ←</button></div>
+            <div id="recent-products" class="recent-products"><div class="empty-state">در حال دریافت اطلاعات...</div></div>
+          </article>
+        </section>
+
+        <section id="view-products" class="view-section" hidden>
+          <div class="section-toolbar">
+            <div><h2>مدیریت محصولات</h2><p class="muted">محصولات فروشگاه را اضافه، ویرایش یا غیرفعال کنید.</p></div>
+            <button class="btn btn-primary" type="button" data-action="add-product"><i class="ri-add-line" aria-hidden="true"></i> محصول جدید</button>
+          </div>
+          <div class="filters-card">
+            <label class="search-box"><span>⌕</span><input id="product-search" type="search" placeholder="جستجوی نام، کد یا توضیحات محصول..." autocomplete="off"></label>
+            <select id="category-filter" aria-label="فیلتر دسته‌بندی"><option value="">همه دسته‌بندی‌ها</option></select>
+            <select id="status-filter" aria-label="فیلتر وضعیت"><option value="">همه وضعیت‌ها</option><option value="active">فعال</option><option value="inactive">غیرفعال</option></select>
+          </div>
+          <div class="panel-card products-card">
+            <div class="table-wrap">
+              <table class="products-table">
+                <thead><tr><th>محصول</th><th>کد</th><th>دسته‌بندی</th><th>قیمت</th><th>وضعیت</th><th>عملیات</th></tr></thead>
+                <tbody id="products-table-body"><tr><td colspan="6" class="empty-state">در حال دریافت محصولات...</td></tr></tbody>
+              </table>
+            </div>
+            <div id="products-count" class="table-footer"></div>
+          </div>
+        </section>
+
+        <section id="view-categories" class="view-section" hidden>
+          <div class="section-toolbar"><div><h2>مدیریت دسته‌بندی‌ها</h2><p class="muted">دسته‌بندی‌ها را اضافه، ویرایش، غیرفعال یا در صورت خالی بودن حذف کنید.</p></div><button class="btn btn-primary" type="button" id="add-category-button"><i class="ri-add-line" aria-hidden="true"></i> دسته‌بندی جدید</button></div>
+          <div class="panel-card products-card"><div class="table-wrap"><table class="products-table"><thead><tr><th>شناسه</th><th>نام دسته‌بندی</th><th>آیکون</th><th>تعداد محصول</th><th>وضعیت</th><th>عملیات</th></tr></thead><tbody id="categories-table-body"><tr><td colspan="6" class="empty-state">در حال دریافت دسته‌بندی‌ها...</td></tr></tbody></table></div><div id="categories-count" class="table-footer"></div></div>
+          <dialog id="category-dialog" class="product-dialog"><form id="category-form" class="dialog-form"><div class="dialog-header"><div><span class="eyebrow">CATEGORY MANAGEMENT</span><h2 id="category-dialog-title">دسته‌بندی جدید</h2></div><button class="icon-button" type="button" id="close-category-dialog" aria-label="بستن">×</button></div><div class="form-grid"><div class="form-field"><label for="category-id-input">شناسه انگلیسی *</label><input id="category-id-input" maxlength="50" pattern="[A-Za-z0-9_-]+" required placeholder="مثلاً jelly-sticker"><small>شناسه بعد از ثبت قابل تغییر نیست.</small></div><div class="form-field"><label for="category-name-input">نام نمایشی *</label><input id="category-name-input" maxlength="120" required placeholder="مثلاً استیکر ژله‌ای"></div><div class="form-field"><label for="category-icon-input">کلاس آیکون Remix *</label><input id="category-icon-input" maxlength="80" pattern="[A-Za-z0-9-]+" required value="ri-apps-line" placeholder="ri-apps-line"></div><div class="form-field full"><label for="category-desc-input">توضیحات (اختیاری)</label><textarea id="category-desc-input" rows="3" maxlength="500" placeholder="توضیح کوتاه برای دسته‌بندی"></textarea></div></div><div id="category-form-message" class="notice" role="alert" hidden></div><div class="dialog-actions"><button class="btn btn-outline" type="button" id="cancel-category-dialog">انصراف</button><button class="btn btn-primary" type="submit" id="save-category-button">ذخیره دسته‌بندی</button></div></form></dialog>
+        </section>
+        <section id="view-analytics" class="view-section" hidden>
+          <div class="section-toolbar analytics-toolbar">
+            <div><span class="eyebrow">STORE PERFORMANCE</span><h2>آمار و گزارش‌های فروشگاه</h2><p class="muted">نمایی از بازدیدها و تعامل کاربران با فروشگاه</p></div>
+            <div class="analytics-toolbar-actions"><label class="analytics-range-label" for="analytics-range">بازه گزارش</label><select id="analytics-range" class="analytics-range-select"><option value="7d">۷ روز گذشته</option><option value="30d" selected>۳۰ روز گذشته</option><option value="90d">۹۰ روز گذشته</option></select><button class="btn btn-outline" type="button" id="analytics-refresh"><i class="ri-refresh-line" aria-hidden="true"></i> بروزرسانی</button></div>
+          </div>
+          <div id="analytics-status" class="analytics-status muted" role="status" aria-live="polite">در حال دریافت گزارش‌ها...</div>
+          <div class="analytics-stats-grid" id="analytics-stats">
+            <article class="analytics-stat-card"><span class="analytics-stat-icon"><i class="ri-eye-line" aria-hidden="true"></i></span><span class="analytics-stat-label">بازدید صفحات</span><strong id="analytics-page-views">—</strong><small>مجموع مشاهده صفحات</small></article>
+            <article class="analytics-stat-card"><span class="analytics-stat-icon"><i class="ri-image-line" aria-hidden="true"></i></span><span class="analytics-stat-label">مشاهده محصولات</span><strong id="analytics-product-views">—</strong><small>بازدید صفحه محصول</small></article>
+            <article class="analytics-stat-card"><span class="analytics-stat-icon"><i class="ri-shopping-bag-3-line" aria-hidden="true"></i></span><span class="analytics-stat-label">افزودن به سبد</span><strong id="analytics-add-to-cart">—</strong><small>افزودن موفق محصول</small></article>
+            <article class="analytics-stat-card"><span class="analytics-stat-icon"><i class="ri-chat-3-line" aria-hidden="true"></i></span><span class="analytics-stat-label">کلیک راه‌های ارتباطی</span><strong id="analytics-contact-clicks">—</strong><small>واتساپ و بله</small></article>
+            <article class="analytics-stat-card"><span class="analytics-stat-icon"><i class="ri-send-plane-line" aria-hidden="true"></i></span><span class="analytics-stat-label">شروع سفارش</span><strong id="analytics-checkout-starts">—</strong><small>شروع فرایند ثبت سفارش</small></article>
+          </div>
+          <div class="analytics-panel-grid">
+            <section class="panel-card analytics-panel analytics-timeline-panel"><div class="analytics-panel-heading"><div><h3>روند بازدید روزانه</h3><p class="muted">تعداد بازدید صفحات در هر روز</p></div><span class="analytics-legend"><i></i> بازدید صفحه</span></div><div id="analytics-timeline" class="analytics-chart" aria-label="نمودار بازدید روزانه"><p class="analytics-empty">هنوز داده‌ای برای نمایش وجود ندارد.</p></div></section>
+            <section class="panel-card analytics-panel"><div class="analytics-panel-heading"><div><h3>نوع دستگاه</h3><p class="muted">توزیع بازدیدها بر اساس دستگاه</p></div></div><div id="analytics-devices" class="analytics-list"><p class="analytics-empty">داده‌ای موجود نیست.</p></div></section>
+          </div>
+          <div class="analytics-panel-grid analytics-lower-grid">
+            <section class="panel-card analytics-panel"><div class="analytics-panel-heading"><div><h3>صفحات پربازدید</h3><p class="muted">۱۰ صفحه برتر در بازه انتخاب‌شده</p></div></div><div id="analytics-top-pages" class="analytics-list"><p class="analytics-empty">داده‌ای موجود نیست.</p></div></section>
+            <section class="panel-card analytics-panel"><div class="analytics-panel-heading"><div><h3>محصولات محبوب</h3><p class="muted">بر اساس تعداد مشاهده صفحه محصول</p></div></div><div id="analytics-top-products" class="analytics-list"><p class="analytics-empty">داده‌ای موجود نیست.</p></div></section>
+            <section class="panel-card analytics-panel"><div class="analytics-panel-heading"><div><h3>منابع ورودی</h3><p class="muted">دامنه ارجاع‌دهنده یا ورود مستقیم</p></div></div><div id="analytics-sources" class="analytics-list"><p class="analytics-empty">داده‌ای موجود نیست.</p></div></section>
+          </div>
+          <p class="analytics-footnote">آمارها به‌صورت تجمیعی و روزانه ثبت می‌شوند و شامل شناسه بازدیدکننده نیستند.</p>
+        </section>
+        <section id="view-settings" class="view-section" hidden>
+          <div class="section-toolbar"><div><h2>تنظیمات فروشگاه</h2><p class="muted">اطلاعات ارتباطی در این بخش ذخیره می‌شوند.</p></div></div>
+          <form id="settings-form" class="panel-card settings-card">
+            <div class="form-section-title"><span><i class="ri-store-2-line" aria-hidden="true"></i></span><div><h3>اطلاعات عمومی</h3><p class="muted">نام فروشگاه و راه‌های ارتباط با مشتری</p></div></div>
+            <div class="form-grid">
+              <div class="form-field full"><label for="setting-store-name">نام فروشگاه</label><input id="setting-store-name" name="storeName" type="text" maxlength="100" required></div>
+              <div class="form-field"><label for="setting-whatsapp">شماره واتساپ</label><input id="setting-whatsapp" name="whatsappNumber" type="tel" inputmode="numeric" placeholder="98912xxxxxxx"><small>با کد کشور، بدون + و صفر ابتدایی</small></div>
+              <div class="form-field"><label for="setting-bale">لینک یا شناسه بله</label><input id="setting-bale" name="baleUrl" type="text" placeholder="https://ble.ir/username یا @username"></div>
+              <div class="form-field full"><label for="setting-instagram">آیدی یا لینک اینستاگرام</label><input id="setting-instagram" name="instagramUrl" type="text" placeholder="sticker.benzi یا لینک پروفایل"></div>
+            </div>
+            <div class="form-actions"><button class="btn btn-primary" type="submit" id="save-settings-button">ذخیره تنظیمات</button></div>
+          </form>
+
+          <section class="panel-card hero-images-settings-card" aria-labelledby="hero-images-settings-title">
+            <div class="form-section-title">
+              <span><i class="ri-image-edit-line" aria-hidden="true"></i></span>
+              <div>
+                <h3 id="hero-images-settings-title">مدیریت تصاویر هیرو</h3>
+                <p class="muted">تصاویر استیکرهای ترند در هیرو صفحه اصلی را از این قسمت تغییر بده. هر تصویر جداگانه ذخیره می‌شود.</p>
+              </div>
+            </div>
+            <div class="hero-image-slots">
+              <article class="hero-image-slot">
+                <div class="hero-image-preview" data-hero-preview="center"><span>بدون تصویر</span></div>
+                <div class="hero-image-slot-info"><strong>تصویر بزرگ مرکزی</strong><small>جایگزین آیکن بزرگ وسط هیرو</small></div>
+                <label class="btn btn-ghost hero-image-upload-label" for="hero-image-center">انتخاب تصویر</label>
+                <input class="hero-image-input" id="hero-image-center" type="file" accept="image/jpeg,image/png,image/webp" data-hero-slot="center">
+                <button class="action-btn delete hero-image-clear" type="button" data-clear-hero-slot="center">حذف تصویر</button>
+                <small class="hero-image-status" data-hero-status="center" role="status"></small>
+              </article>
+              <article class="hero-image-slot">
+                <div class="hero-image-preview" data-hero-preview="left1"><span>بدون تصویر</span></div>
+                <div class="hero-image-slot-info"><strong>استیکر کناری ۱</strong><small>یکی از کارت‌های کوچک اطراف</small></div>
+                <label class="btn btn-ghost hero-image-upload-label" for="hero-image-left1">انتخاب تصویر</label>
+                <input class="hero-image-input" id="hero-image-left1" type="file" accept="image/jpeg,image/png,image/webp" data-hero-slot="left1">
+                <button class="action-btn delete hero-image-clear" type="button" data-clear-hero-slot="left1">حذف تصویر</button>
+                <small class="hero-image-status" data-hero-status="left1" role="status"></small>
+              </article>
+              <article class="hero-image-slot">
+                <div class="hero-image-preview" data-hero-preview="left2"><span>بدون تصویر</span></div>
+                <div class="hero-image-slot-info"><strong>استیکر کناری ۲</strong><small>یکی از کارت‌های کوچک اطراف</small></div>
+                <label class="btn btn-ghost hero-image-upload-label" for="hero-image-left2">انتخاب تصویر</label>
+                <input class="hero-image-input" id="hero-image-left2" type="file" accept="image/jpeg,image/png,image/webp" data-hero-slot="left2">
+                <button class="action-btn delete hero-image-clear" type="button" data-clear-hero-slot="left2">حذف تصویر</button>
+                <small class="hero-image-status" data-hero-status="left2" role="status"></small>
+              </article>
+              <article class="hero-image-slot">
+                <div class="hero-image-preview" data-hero-preview="left3"><span>بدون تصویر</span></div>
+                <div class="hero-image-slot-info"><strong>استیکر کناری ۳</strong><small>یکی از کارت‌های کوچک اطراف</small></div>
+                <label class="btn btn-ghost hero-image-upload-label" for="hero-image-left3">انتخاب تصویر</label>
+                <input class="hero-image-input" id="hero-image-left3" type="file" accept="image/jpeg,image/png,image/webp" data-hero-slot="left3">
+                <button class="action-btn delete hero-image-clear" type="button" data-clear-hero-slot="left3">حذف تصویر</button>
+                <small class="hero-image-status" data-hero-status="left3" role="status"></small>
+              </article>
+              <article class="hero-image-slot">
+                <div class="hero-image-preview" data-hero-preview="left4"><span>بدون تصویر</span></div>
+                <div class="hero-image-slot-info"><strong>استیکر کناری ۴</strong><small>یکی از کارت‌های کوچک اطراف</small></div>
+                <label class="btn btn-ghost hero-image-upload-label" for="hero-image-left4">انتخاب تصویر</label>
+                <input class="hero-image-input" id="hero-image-left4" type="file" accept="image/jpeg,image/png,image/webp" data-hero-slot="left4">
+                <button class="action-btn delete hero-image-clear" type="button" data-clear-hero-slot="left4">حذف تصویر</button>
+                <small class="hero-image-status" data-hero-status="left4" role="status"></small>
+              </article>
+            </div>
+            <p class="hero-image-help">فرمت مجاز JPG، PNG یا WebP · حداکثر ۵ مگابایت برای هر تصویر. برای استیکرهای بدون زمینه، PNG یا WebP شفاف پیشنهاد می‌شود.</p>
+          </section>
+        </section>
+
+        <footer class="admin-footer">استیکر بنزی · پنل مدیریت</footer>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="product-dialog" class="product-dialog">
+    <form id="product-form" class="dialog-form">
+      <div class="dialog-header"><div><span class="eyebrow">PRODUCT MANAGEMENT</span><h2 id="product-dialog-title">افزودن محصول</h2></div><button class="icon-button" type="button" id="close-product-dialog" aria-label="بستن">×</button></div>
+      <div class="form-grid">
+        <div class="form-field"><label for="product-id">کد محصول *</label><input id="product-id" name="id" type="text" maxlength="40" pattern="[A-Za-z0-9_-]+" required placeholder="مثلاً J05"><small>فقط حروف انگلیسی، عدد، خط تیره و زیرخط</small></div>
+        <div class="form-field"><label for="product-name">نام محصول *</label><input id="product-name" name="name" type="text" maxlength="160" required></div>
+        <div class="form-field"><label for="product-category">دسته‌بندی *</label><select id="product-category" name="cat" required></select></div>
+        <div class="form-field"><label for="product-price">قیمت (تومان) *</label><input id="product-price" name="price" type="number" min="0" step="1" inputmode="numeric" required></div>
+        <div class="form-field full"><label for="product-description">توضیحات</label><textarea id="product-description" name="desc" rows="4" maxlength="3000"></textarea></div>
+        <div class="form-field full"><label for="product-image">تصویر محصول</label>
+          <div class="image-upload-row"><div class="image-preview" id="image-preview"><span>بدون تصویر</span></div><div class="image-upload-controls"><input id="product-image" type="file" accept="image/jpeg,image/png,image/webp"><small>JPG، PNG یا WebP · حداکثر ۵ مگابایت</small><span id="image-upload-status" class="muted"></span></div></div>
+          <input id="product-image-path" type="hidden" name="img" value="">
+        </div>
+        <div class="form-field full"><label class="checkbox-field"><input id="product-active" type="checkbox" checked><span>محصول در فروشگاه فعال و قابل سفارش باشد</span></label></div>
+      </div>
+      <div id="product-form-message" class="notice" role="alert" hidden></div>
+      <div class="dialog-actions"><button class="btn btn-outline" type="button" id="cancel-product-dialog">انصراف</button><button class="btn btn-primary" type="submit" id="save-product-button">ذخیره محصول</button></div>
+    </form>
+  </dialog>
+
+
+  
+<!-- Product Image Cropper Dialog -->
+<dialog
+  id="image-cropper-dialog"
+  class="image-cropper-dialog"
+  aria-labelledby="image-cropper-title"
+>
+  <div class="image-cropper-shell">
+
+    <!-- Header -->
+    <header class="image-cropper-header">
+      <div>
+        <span class="eyebrow">IMAGE EDITOR</span>
+        <h2 id="image-cropper-title">ویرایش تصویر محصول</h2>
+        <p>تصویر را جابه‌جا کن و محدوده دلخواهت را انتخاب کن.</p>
+      </div>
+
+      <button
+        type="button"
+        class="icon-button"
+        id="close-cropper-dialog"
+        aria-label="بستن ویرایشگر تصویر"
+      >
+        ×
+      </button>
+    </header>
+
+    <div
+  id="cropper-message"
+  class="notice"
+  role="alert"
+  hidden
+></div>
+
+    <!-- Image Cropper Area -->
+    <div class="image-cropper-stage-wrap">
+      <div class="image-cropper-stage" dir="ltr">
+        <img
+          id="image-cropper-source"
+          alt="تصویر انتخاب‌شده برای برش"
+          draggable="false"
+        >
+      </div>
+    </div>
+
+    <!-- Cropper Controls -->
+    <div
+      class="image-cropper-toolbar"
+      aria-label="ابزارهای ویرایش تصویر"
+    >
+
+      <button
+        type="button"
+        class="cropper-tool-button"
+        id="cropper-zoom-in"
+        aria-label="بزرگ‌نمایی"
+        title="بزرگ‌نمایی"
+      >
+        <i class="ri-zoom-in-line" aria-hidden="true"></i>
+        <span>بزرگ‌نمایی</span>
+      </button>
+
+      <button
+        type="button"
+        class="cropper-tool-button"
+        id="cropper-zoom-out"
+        aria-label="کوچک‌نمایی"
+        title="کوچک‌نمایی"
+      >
+        <i class="ri-zoom-out-line" aria-hidden="true"></i>
+        <span>کوچک‌نمایی</span>
+      </button>
+
+      <button
+        type="button"
+        class="cropper-tool-button"
+        id="cropper-rotate-left"
+        aria-label="چرخش تصویر"
+        title="چرخش تصویر"
+      >
+        <i class="ri-anticlockwise-line" aria-hidden="true"></i>
+        <span>چرخش ۹۰ درجه</span>
+      </button>
+
+      <button
+        type="button"
+        class="cropper-tool-button"
+        id="cropper-reset"
+        aria-label="بازنشانی ویرایش"
+        title="بازنشانی"
+      >
+        <i class="ri-refresh-line" aria-hidden="true"></i>
+        <span>بازنشانی</span>
+      </button>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="image-cropper-footer">
+
+      <div class="image-cropper-note">
+        <i class="ri-information-line" aria-hidden="true"></i>
+        <span>محدوده برش به‌صورت مربعی تنظیم خواهد شد.</span>
+      </div>
+
+      <div class="image-cropper-actions">
+
+        <button
+          type="button"
+          class="btn btn-outline"
+          id="cancel-cropper"
+        >
+          انصراف
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="apply-cropper"
+        >
+          <i class="ri-check-line" aria-hidden="true"></i>
+          تأیید و ادامه
+        </button>
+
+      </div>
+
+    </footer>
+
+  </div>
+</dialog>
+<!-- End Product Image Cropper Dialog -->
+
+
+
+  <div id="confirm-dialog" class="confirm-overlay" hidden>
+    <div class="confirm-card" role="alertdialog" aria-modal="true" aria-labelledby="confirm-title" aria-describedby="confirm-message">
+      <span class="confirm-icon">!</span><h2 id="confirm-title">حذف محصول</h2><p id="confirm-message">از حذف این محصول مطمئن هستید؟</p>
+      <div class="dialog-actions"><button class="btn btn-outline" type="button" id="confirm-cancel">انصراف</button><button class="btn btn-danger" type="button" id="confirm-accept">حذف محصول</button></div>
+    </div>
+  </div>
+</body>
+</html>

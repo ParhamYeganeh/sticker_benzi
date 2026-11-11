@@ -1,0 +1,249 @@
+/* ============ هیرو سکشن ============ */
+.hero {
+  position: relative; overflow: hidden;
+  min-height: 100svh;
+  display: flex; align-items: center;
+  padding: calc(var(--header-h) + 32px) 0 72px;
+}
+
+/* ---- اشکال هندسی مات پشت هیرو ---- */
+.hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.shape { position: absolute; opacity: .16; animation: drift 14s ease-in-out infinite; }
+.shape.circle   { border-radius: 50%; background: var(--purple-glow); }
+.shape.ring     { border-radius: 50%; border: 3px solid var(--yellow); }
+.shape.square   { border-radius: 22%; background: var(--yellow); transform: rotate(18deg); }
+.shape.pill     { border-radius: 999px; background: var(--purple-glow); }
+.shape.triangle { width: 0; height: 0; background: none; opacity: .18;
+  border-inline: 36px solid transparent; border-bottom: 62px solid var(--yellow); }
+.shape.plus::before, .shape.plus::after { content: ""; position: absolute; background: var(--yellow); border-radius: 4px; }
+.shape.plus::before { inset: 42% 0; }
+.shape.plus::after  { inset: 0 42%; }
+
+.s1 { width: 340px; height: 340px; top: -90px; inset-inline-start: -90px; opacity: .22; animation-delay: -2s; }
+.s2 { width: 120px; height: 120px; top: 22%; inset-inline-end: 8%; animation-delay: -5s; }
+.s3 { width: 70px;  height: 70px;  bottom: 18%; inset-inline-start: 10%; animation-delay: -8s; }
+.s4 { width: 180px; height: 60px;  bottom: 10%; inset-inline-end: 12%; transform: rotate(-24deg); animation-delay: -3s; }
+.s5 { top: 30%; inset-inline-start: 6%; animation-delay: -6s; }
+.s6 { width: 44px; height: 44px; top: 14%; inset-inline-start: 42%; animation-delay: -9s; }
+.s7 { width: 90px; height: 90px; bottom: -30px; inset-inline-start: 44%; opacity: .12; animation-delay: -1s; }
+
+@keyframes drift {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -18px; }
+}
+
+/* ---- محتوا ---- */
+.hero-inner {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 48px;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 16px; border-radius: 999px;
+  background: var(--glass); border: 1px solid var(--border-yellow);
+  color: var(--yellow); font-size: .88rem; font-weight: 600;
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+
+.hero-title {
+  margin: 18px 0 14px;
+  font-size: clamp(2rem, 5.2vw, 3.6rem);
+  font-weight: 900; line-height: 1.35;
+}
+.hero-title .hl {
+  background: linear-gradient(135deg, var(--yellow), var(--yellow-deep));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+.hero-text { color: var(--text-dim); font-size: 1.05rem; max-width: 520px; }
+
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.hero-cta .btn { padding: 13px 26px; font-size: 1rem; }
+
+/* ---- کلاستر استیکرهای شیشه‌ای ---- */
+.hero-visual { position: relative; aspect-ratio: 1; max-width: 520px; width: 100%; margin-inline: auto; }
+.hero-visual::before {
+  content: ""; position: absolute; inset: 8%; border-radius: 50%;
+  background: radial-gradient(circle, rgba(138, 63, 209, .55), transparent 68%);
+  filter: blur(10px);
+}
+
+.tile {
+  position: absolute; display: grid; place-items: center;
+  border-radius: 26px; font-size: 2.6rem;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .15);
+  transition: transform .35s var(--ease), border-color .3s, box-shadow .3s, color .3s;
+  animation: float 6s ease-in-out infinite;
+}
+.tile:hover { border-color: var(--yellow); color: var(--yellow);
+  box-shadow: 0 16px 40px rgba(255, 213, 36, .28), inset 0 1px 0 rgba(255, 255, 255, .2); }
+
+.tile.big   { width: 50%; height: 50%; inset: 27% auto auto 27%; font-size: 4.4rem; color: var(--yellow);
+  background: linear-gradient(145deg, rgba(85, 24, 93, .75), rgba(41, 8, 73, .75)); border-color: var(--border-yellow); }
+.tile.t1 { width: 26%; height: 26%; top: 2%;  left: 8%;   animation-delay: -1s;  color: #ff8fd0; }
+.tile.t2 { width: 22%; height: 22%; top: 6%;  right: 6%;  animation-delay: -3s;  color: var(--yellow); }
+.tile.t3 { width: 29%; height: 29%; bottom: 4%; left: 4%; animation-delay: -2s;  color: #8fd3ff; }
+.tile.t4 { width: 32%; height: 32%; bottom: 2%; right: 8%; animation-delay: -4s; color: #b9ff8f; }
+.tile.t5 { width: 19%; height: 19%; top: 44%; right: -2%; font-size: 1.8rem; animation-delay: -5s; }
+.tile.t6 { width: 18%; height: 18%; top: 40%; left: -3%;  font-size: 1.7rem; animation-delay: -2.5s; color: var(--yellow); }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-14px) rotate(3deg); }
+}
+
+
+/* ---- واترمارک گرافیکی HI BENZ پشت محتوای هیرو ---- */
+.hero-watermark {
+  position: absolute;
+  z-index: 0;
+  top: 20%;
+  left: 50%;
+  display: block;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(6rem, 17vw, 15rem);
+  font-weight: 1000;
+  line-height: .85;
+  letter-spacing: -.075em;
+  color: rgba(255, 213, 36, .15);
+  -webkit-text-stroke: 1.5px rgba(255, 213, 36, .28);
+  text-shadow: 0 0 42px rgba(255, 213, 36, .14);
+  transform: translate(-50%, -50%) rotate(-7deg);
+  transform-origin: center;
+  animation: hi-benz-drift 13s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes hi-benz-drift {
+  0%, 100% { transform: translate(-50%, -50%) rotate(-7deg) scale(1); }
+  50% { transform: translate(calc(-50% + 16px), calc(-50% - 14px)) rotate(-3deg) scale(1.035); }
+}
+
+@media (max-width: 860px) {
+  .hero-watermark {
+    top: 15%;
+    font-size: clamp(4.6rem, 19vw, 8.5rem);
+    -webkit-text-stroke-width: 1px;
+  }
+}
+
+/* ---- موبایل ---- */
+@media (max-width: 860px) {
+  .hero { min-height: auto; padding-bottom: 56px; }
+  .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 32px; }
+  .hero-text { margin-inline: auto; }
+  .hero-cta { justify-content: center; }
+  .hero-visual { max-width: 400px; order: -1; }
+  .tile { border-radius: 18px; font-size: 1.8rem; }
+  .tile.big { font-size: 3rem; }
+}
+
+/* ---- واترمارک HI BENZ کوچک‌تر و با حرکت پرانرژی‌تر ---- */
+.hero-watermark {
+  font-size: clamp(3rem, 8.5vw, 7.5rem);
+  animation: hi-benz-sweep 17s cubic-bezier(.55,.05,.35,.95) infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes hi-benz-sweep {
+  0% {
+    opacity: 0;
+    transform: translate(calc(-50% - 115vw), -50%) rotate(-13deg) scale(.78);
+  }
+  12% { opacity: .82; }
+  28% {
+    transform: translate(-50%, calc(-50% - 20px)) rotate(5deg) scale(1.06);
+    opacity: .9;
+  }
+  42% {
+    transform: translate(calc(-50% + 7vw), calc(-50% + 12px)) rotate(-5deg) scale(.96);
+  }
+  58% {
+    transform: translate(calc(-50% + 18vw), calc(-50% - 22px)) rotate(8deg) scale(1.08);
+  }
+  76% { opacity: .76; }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + 115vw), -50%) rotate(16deg) scale(.82);
+  }
+}
+
+@media (max-width: 860px) {
+  .hero-watermark {
+    top: 15%;
+    font-size: clamp(2.7rem, 9.5vw, 4.25rem);
+    -webkit-text-stroke-width: .8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-watermark { animation: none; }
+}
+
+
+/* ---- تصاویر قابل مدیریت از پنل ادمین در کلاستر هیرو ---- */
+.tile.has-custom-image {
+  overflow: hidden;
+  color: transparent;
+}
+
+.tile.has-custom-image:hover {
+  color: transparent;
+}
+
+.hero-tile-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 8%;
+  object-fit: contain;
+  object-position: center;
+  border-radius: inherit;
+  box-sizing: border-box;
+  filter: drop-shadow(0 5px 9px rgba(0, 0, 0, .2));
+}
+
+.tile.big .hero-tile-image {
+  padding: 6%;
+}
+
+@media (max-width: 480px) {
+  .hero-visual {
+    max-width: 350px;
+  }
+
+  .tile.big {
+    width: 48%;
+    height: 48%;
+    font-size: 2.8rem;
+  }
+
+  .tile.t3 {
+    width: 27%;
+    height: 27%;
+  }
+
+  .tile.t4 {
+    width: 30%;
+    height: 30%;
+  }
+
+  .tile.t5 {
+    width: 17%;
+    height: 17%;
+    font-size: 1.5rem;
+  }
+
+  .tile.t6 {
+    width: 16%;
+    height: 16%;
+    font-size: 1.4rem;
+  }
+}

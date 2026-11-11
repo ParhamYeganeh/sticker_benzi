@@ -1,0 +1,310 @@
+/* ============ صفحه‌های داخلی (درباره ما / نحوه سفارش) ============ */
+
+/* ---- هدر صفحه ---- */
+.page-hero {
+  position: relative; overflow: hidden; text-align: center;
+  padding: calc(var(--header-h) + 56px) 0 40px;
+}
+.ph-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.ph-bg .shape { position: absolute; opacity: .13; animation: drift 15s ease-in-out infinite; }
+.ph-bg .q1 { width: 260px; height: 260px; border-radius: 50%; background: var(--purple-glow); top: -110px; inset-inline-start: -70px; }
+.ph-bg .q2 { width: 80px; height: 80px; border-radius: 24%; background: var(--yellow); top: 40%; inset-inline-end: 9%; transform: rotate(18deg); animation-delay: -4s; }
+.ph-bg .q3 { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--yellow); bottom: -40px; inset-inline-start: 18%; animation-delay: -8s; }
+.page-hero .container { position: relative; z-index: 1; }
+
+.breadcrumb { display: flex; justify-content: center; align-items: center; gap: 6px; color: var(--text-dim); font-size: .88rem; margin-bottom: 14px; }
+.breadcrumb a:hover { color: var(--yellow); }
+.breadcrumb i { font-size: 1rem; }
+.page-title { font-size: clamp(1.9rem, 4.6vw, 3rem); font-weight: 900; line-height: 1.45; }
+.page-title .hl { background: linear-gradient(135deg, var(--yellow), var(--yellow-deep)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.page-lead { color: var(--text-dim); max-width: 560px; margin: 12px auto 0; font-size: 1.05rem; }
+
+.page-section { padding: 56px 0; position: relative; }
+.page-section .container { position: relative; z-index: 1; }
+
+/* ---- کارت شیشه‌ای عمومی ---- */
+.glass {
+  background: var(--glass); border: 1px solid var(--border); border-radius: var(--radius);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  transition: transform .3s var(--ease), border-color .3s, box-shadow .3s;
+}
+.glass.lift:hover { transform: translateY(-6px); border-color: var(--border-yellow); box-shadow: 0 16px 36px rgba(0, 0, 0, .35); }
+
+.ico {
+  width: 60px; height: 60px; display: grid; place-items: center; flex: none;
+  border-radius: 20px; font-size: 1.7rem; color: var(--yellow);
+  background: linear-gradient(145deg, rgba(85, 24, 93, .8), rgba(41, 8, 73, .8));
+  border: 1px solid var(--border-yellow);
+  transition: transform .35s var(--ease);
+}
+.lift:hover .ico { transform: rotate(-8deg) scale(1.08); }
+
+/* ---- درباره ما: داستان ---- */
+.story { display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: center; }
+.story-visual {
+  position: relative; aspect-ratio: 1; max-width: 360px; width: 100%; margin-inline: auto;
+  display: grid; place-items: center; border-radius: 32px;
+  background: linear-gradient(145deg, rgba(85, 24, 93, .6), rgba(41, 8, 73, .6));
+  border: 1px solid var(--border-yellow);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .4), inset 0 1px 0 rgba(255, 255, 255, .15);
+}
+.story-visual::before { content: ""; position: absolute; inset: -14px; border-radius: 40px; border: 1px dashed rgba(255, 213, 36, .3); }
+.story-visual img  {
+  width: 52%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 24px rgba(255, 213, 36, .25));
+  transition: transform .5s var(--ease);
+}
+.story-visual:hover img { transform: rotate(-10deg) scale(1.06); }
+.story-text h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 900; margin-bottom: 12px; line-height: 1.6; }
+.story-text p { color: var(--text-dim); margin-bottom: 14px; }
+
+/* ---- ارزش‌ها ---- */
+.values { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.value { padding: 26px 20px; text-align: center; }
+.value .ico { margin: 0 auto 14px; }
+.value h3 { font-size: 1.02rem; font-weight: 800; margin-bottom: 6px; }
+.value p { color: var(--text-dim); font-size: .9rem; }
+
+/* ---- دسته‌ها (درباره ما) ---- */
+.cat-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 8px; }
+
+/* ---- نحوه سفارش: تایم‌لاین ---- */
+.how-layout { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: start; }
+
+.timeline { position: relative; display: grid; gap: 18px; }
+.timeline::before {
+  content: ""; position: absolute; top: 30px; bottom: 30px; inset-inline-start: 29px;
+  border-inline-start: 2px dashed rgba(255, 213, 36, .3);
+}
+.t-step { position: relative; display: flex; gap: 18px; align-items: flex-start; padding: 18px; }
+.t-step .ico { position: relative; z-index: 1; }
+.t-step h3 { font-size: 1.08rem; font-weight: 800; margin-bottom: 4px; }
+.t-step h3 small { color: var(--yellow); font-weight: 700; font-size: .8rem; margin-inline-end: 6px; }
+.t-step p { color: var(--text-dim); font-size: .93rem; }
+
+/* ---- پیش‌نمایش پیام واتساپ ---- */
+.chat { position: sticky; top: calc(var(--header-h) + 20px); padding: 0; overflow: hidden; }
+.chat-bar { display: flex; align-items: center; gap: 10px; padding: 12px 16px; background: rgba(41, 8, 73, .7); border-bottom: 1px solid var(--border); font-weight: 700; font-size: .92rem; }
+.chat-bar i { color: var(--yellow); font-size: 1.3rem; }
+.chat-body { padding: 18px 16px 22px; display: grid; gap: 12px; }
+.bubble { max-width: 88%; padding: 10px 14px; border-radius: 16px; font-size: .9rem; line-height: 1.9; white-space: pre-line; }
+.bubble.me { justify-self: start; background: linear-gradient(135deg, var(--yellow), var(--yellow-deep)); color: var(--purple-deep); border-end-start-radius: 4px; font-weight: 600; }
+.bubble.us { justify-self: end; background: rgba(255, 255, 255, .08); border: 1px solid var(--border); border-end-end-radius: 4px; }
+.chat-note { text-align: center; color: var(--text-dim); font-size: .8rem; padding: 0 16px 16px; }
+
+/* ---- اطلاعات ارسال و پرداخت ---- */
+.info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.info { padding: 24px 20px; }
+.info .ico { margin-bottom: 12px; }
+.info h3 { font-size: 1.02rem; font-weight: 800; margin-bottom: 6px; }
+.info p { color: var(--text-dim); font-size: .9rem; }
+
+/* ---- سوالات متداول ---- */
+.faq { max-width: 780px; margin-inline: auto; display: grid; gap: 12px; }
+.faq details { padding: 0; overflow: hidden; }
+.faq details[open] { border-color: var(--border-yellow); }
+.faq summary {
+  list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 16px 20px; font-weight: 700; font-size: .98rem;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary i { color: var(--yellow); font-size: 1.3rem; transition: transform .3s var(--ease); flex: none; }
+.faq details[open] summary i { transform: rotate(180deg); }
+.faq summary:hover { color: var(--yellow); }
+.faq .answer { padding: 0 20px 18px; color: var(--text-dim); font-size: .93rem; }
+
+/* ---- بنر دعوت به اقدام ---- */
+.cta-band {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  padding: 32px 36px; border-color: var(--border-yellow);
+  background: linear-gradient(135deg, rgba(85, 24, 93, .6), rgba(41, 8, 73, .6));
+}
+.cta-band h2 { font-size: clamp(1.2rem, 2.6vw, 1.6rem); font-weight: 900; margin-bottom: 4px; }
+.cta-band p { color: var(--text-dim); }
+.cta-band .btn { padding: 13px 28px; font-size: 1rem; }
+
+/* ---- ریسپانسیو ---- */
+@media (max-width: 960px) {
+  .values { grid-template-columns: repeat(2, 1fr); }
+  .info-grid { grid-template-columns: 1fr; }
+  .how-layout { grid-template-columns: 1fr; gap: 32px; }
+  .chat { position: static; max-width: 420px; margin-inline: auto; }
+}
+@media (max-width: 860px) {
+  .story { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+  .story-visual { max-width: 240px; }
+}
+@media (max-width: 520px) {
+  .page-hero { padding-top: calc(var(--header-h) + 36px); }
+  .page-section { padding: 40px 0; }
+  .values { gap: 12px; }
+  .story-visual img { width: 60%; }
+  .value { padding: 20px 12px; }
+  .value p { font-size: .82rem; }
+  .t-step { padding: 14px; gap: 12px; }
+  .timeline::before { inset-inline-start: 25px; }
+  .ico { width: 50px; height: 50px; font-size: 1.45rem; border-radius: 16px; }
+  .cta-band { padding: 24px 20px; text-align: center; justify-content: center; }
+}
+
+/* ============ صفحه ۴۰۴ ============ */
+.notfound {
+  position: relative; overflow: hidden; text-align: center;
+  min-height: 100svh; display: flex; align-items: center;
+  padding: calc(var(--header-h) + 32px) 0 56px;
+}
+.notfound .container { position: relative; z-index: 1; }
+.nf-code { display: flex; justify-content: center; align-items: center; gap: 6px; line-height: 1; margin-bottom: 18px; }
+.nf-code span {
+  font-size: clamp(5rem, 20vw, 10rem); font-weight: 900;
+  background: linear-gradient(135deg, var(--yellow), var(--yellow-deep));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.nf-code img { width: clamp(70px, 17vw, 130px); height: auto; animation: float404 5s ease-in-out infinite; filter: drop-shadow(0 12px 24px rgba(255, 213, 36, .25)); }
+@keyframes float404 { 0%, 100% { transform: rotate(-8deg) translateY(0); } 50% { transform: rotate(6deg) translateY(-12px); } }
+.nf-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 26px; }
+.nf-actions .btn { padding: 13px 26px; font-size: 1rem; }
+
+/* ============ هدر صفحه دسته‌بندی ============ */
+.cat-hero .ico { margin: 0 auto 14px; width: 72px; height: 72px; font-size: 2rem; border-radius: 22px; }
+.cat-switch { margin: 26px 0 0; }
+
+/* ============ نوار جستجو و مرتب‌سازی ============ */
+.cat-toolbar { padding: 8px 0 0; position: relative; z-index: 1; }
+.toolbar { display: flex; gap: 14px; align-items: center; padding: 12px 14px; }
+.toolbar .search { position: relative; flex: 1; display: block; }
+.toolbar .search i { position: absolute; inset-block: 0; inset-inline-start: 14px; display: grid; place-items: center; color: var(--text-dim); font-size: 1.15rem; pointer-events: none; }
+.toolbar input, .toolbar select {
+  font: inherit; color: var(--text); width: 100%;
+  padding: 11px 14px; border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, .06); border: 1px solid var(--border);
+  transition: border-color .25s, box-shadow .25s, background .25s;
+}
+.toolbar input { padding-inline-start: 42px; }
+.toolbar input::placeholder { color: var(--text-dim); opacity: .75; }
+.toolbar input:focus, .toolbar select:focus { outline: none; border-color: var(--yellow); background: rgba(255, 213, 36, .06); box-shadow: 0 0 0 3px rgba(255, 213, 36, .15); }
+.toolbar select option { background: var(--bg-2); color: var(--text); }
+.toolbar .sort { display: flex; align-items: center; gap: 8px; flex: none; }
+.toolbar .sort label { color: var(--text-dim); font-size: .88rem; white-space: nowrap; }
+.toolbar .sort select { width: auto; min-width: 140px; cursor: pointer; }
+.result-count { margin: 14px 4px 0; color: var(--text-dim); font-size: .9rem; min-height: 1.6em; }
+
+@media (max-width: 640px) {
+  .toolbar { flex-direction: column; align-items: stretch; gap: 10px; }
+  .toolbar .sort { justify-content: space-between; }
+  .toolbar .sort select { flex: 1; }
+}
+
+/* CTA پیام‌رسان‌ها در صفحه نحوه سفارش */
+.how-contact-panel {
+  grid-column: 1 / -1;
+  display: flex; align-items: center; justify-content: space-between; gap: 22px;
+  flex-wrap: wrap; margin-top: 34px; padding: 26px 30px;
+  border-color: var(--border-yellow);
+  background: linear-gradient(135deg, rgba(85, 24, 93, .48), rgba(41, 8, 73, .58));
+}
+.how-contact-copy h2 { margin-bottom: 5px; font-size: 1.15rem; font-weight: 900; }
+.how-contact-copy p { color: var(--text-dim); font-size: .9rem; }
+.how-contact-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.how-contact-actions .btn { min-width: 170px; }
+@media (max-width: 620px) {
+  .how-contact-panel { justify-content: center; padding: 22px 16px; text-align: center; }
+  .how-contact-actions { width: 100%; }
+  .how-contact-actions .btn { flex: 1 1 100%; }
+}
+
+
+/* کارت شماره تماس در صفحه درباره ما */
+.about-phone-section { padding-top: 8px; }
+.about-phone-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  max-width: 620px;
+  margin-inline: auto;
+  padding: 22px 24px;
+  border-radius: 24px;
+  border: 1px solid rgba(255,213,36,.28);
+  background: linear-gradient(110deg, rgba(255,213,36,.09), rgba(138,63,209,.13));
+  box-shadow: 0 14px 38px rgba(0,0,0,.18);
+  transition: transform .25s var(--ease), border-color .25s;
+}
+.about-phone-card:hover { transform: translateY(-3px); border-color: var(--yellow); }
+.about-phone-icon { flex: 0 0 58px; width: 58px; height: 58px; display: grid; place-items: center; border-radius: 18px; background: rgba(255,213,36,.13); color: var(--yellow); font-size: 1.8rem; }
+.about-phone-copy { display: grid; gap: 2px; }
+.about-phone-copy small { color: var(--text-dim); font-size: .8rem; }
+.about-phone-copy strong { font-weight: 800; }
+.about-phone-copy b { color: var(--yellow); font-size: 1.1rem; letter-spacing: .04em; }
+.about-phone-arrow { margin-inline-start: auto; color: var(--yellow); font-size: 1.35rem; }
+.pickup-about-section { padding-top: 12px; }
+.pickup-card-about { margin-top: 0; }
+@media (max-width: 520px) {
+  .about-phone-card { gap: 12px; padding: 17px; }
+  .about-phone-icon { flex-basis: 48px; width: 48px; height: 48px; border-radius: 15px; }
+  .about-phone-copy b { font-size: 1rem; }
+}
+
+/* کارت تحویل حضوری در صفحه درباره ما (هماهنگ با کارت صفحه سفارش) */
+.pickup-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  overflow: hidden;
+  margin-top: 32px;
+  padding: clamp(22px, 4vw, 34px);
+  border: 1px solid rgba(255, 213, 36, .28);
+  border-radius: 28px;
+  background: linear-gradient(115deg, rgba(255, 213, 36, .10), rgba(138, 63, 209, .12) 55%, rgba(255,255,255,.025));
+  box-shadow: 0 18px 48px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.pickup-card::before {
+  content: "";
+  position: absolute;
+  inset-inline-end: -70px;
+  top: -90px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,213,36,.17);
+  box-shadow: 0 0 0 24px rgba(255,213,36,.025), 0 0 0 48px rgba(255,213,36,.018);
+  pointer-events: none;
+}
+.pickup-card-icon { flex: 0 0 76px; width: 76px; height: 76px; display: grid; place-items: center; border-radius: 24px; color: var(--yellow); font-size: 2.2rem; background: linear-gradient(145deg, rgba(255,213,36,.16), rgba(138,63,209,.18)); border: 1px solid rgba(255,213,36,.3); }
+.pickup-card-content { position: relative; z-index: 1; flex: 1; }
+.pickup-eyebrow { display: inline-block; color: var(--yellow); font-size: .82rem; font-weight: 800; margin-bottom: 5px; }
+.pickup-card-content h3, .pickup-card-content h2 { margin: 0 0 8px; font-size: clamp(1.25rem, 2.5vw, 1.8rem); font-weight: 900; line-height: 1.5; }
+.pickup-card-content p { margin: 0; max-width: 760px; color: var(--text-dim); line-height: 2; }
+.pickup-card-spark { position: relative; z-index: 1; align-self: flex-start; color: rgba(255,213,36,.7); font-size: 2rem; transform: rotate(-12deg); }
+.pickup-card-about { margin-top: 0; }
+@media (max-width: 600px) {
+  .pickup-card { align-items: flex-start; gap: 14px; padding: 20px 17px; border-radius: 22px; }
+  .pickup-card-icon { flex-basis: 54px; width: 54px; height: 54px; border-radius: 17px; font-size: 1.65rem; }
+  .pickup-card-spark { display: none; }
+  .pickup-card-content p { font-size: .92rem; line-height: 1.9; }
+}
+
+
+/* FIX: Prevent order message preview from overlapping CTA */
+
+.how-layout > .chat {
+  position: static !important;
+  top: auto !important;
+  align-self: start;
+  margin: 0;
+}
+
+@media (max-width: 960px) {
+  .how-layout > .chat {
+    position: static !important;
+    top: auto !important;
+    width: 100%;
+    max-width: 420px;
+    margin-inline: auto;
+  }
+}
+
+

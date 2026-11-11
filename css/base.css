@@ -1,0 +1,149 @@
+/* ============ استیکر بنزی | استایل پایه ============ */
+:root {
+  /* پالت اصلی */
+  --yellow: #FFD524;
+  --yellow-deep: #ECB602;
+  --purple: #55185D;
+  --purple-deep: #290849;
+  --purple-glow: #8a3fd1;
+
+  /* سطوح تیره */
+  --bg: #0d0616;
+  --bg-2: #160a26;
+  --text: #f6f1ff;
+  --text-dim: #b9a9d6;
+
+  /* شیشه */
+  --glass: rgba(255, 255, 255, 0.06);
+  --glass-strong: rgba(30, 12, 52, 0.62);
+  --border: rgba(255, 255, 255, 0.12);
+  --border-yellow: rgba(255, 213, 36, 0.45);
+
+  --radius: 16px;
+  --radius-sm: 10px;
+  --header-h: 72px;
+  --container: 1180px;
+  --ease: cubic-bezier(.22, .8, .3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); }
+
+body {
+  font-family: 'Vazirmatn', system-ui, sans-serif;
+  background:
+    radial-gradient(900px 500px at 85% -10%, rgba(85, 24, 93, .55), transparent 60%),
+    radial-gradient(700px 500px at 0% 30%, rgba(41, 8, 73, .7), transparent 60%),
+    var(--bg);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.8;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+[hidden] { display: none !important; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+button { font: inherit; color: inherit; cursor: pointer; border: 0; background: none; }
+
+.container { width: min(100% - 32px, var(--container)); margin-inline: auto; }
+
+/* ---------- دکمه‌ها ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 10px 20px; border-radius: 999px; font-weight: 700; font-size: .95rem;
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s, color .25s, border-color .25s;
+}
+.btn-yellow {
+  background: linear-gradient(135deg, var(--yellow), var(--yellow-deep));
+  color: var(--purple-deep);
+  box-shadow: 0 6px 18px rgba(255, 213, 36, .25);
+}
+.btn-yellow:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(255, 213, 36, .45); }
+.btn-ghost { border: 1px solid var(--border); background: var(--glass); }
+.btn-ghost:hover { border-color: var(--yellow); color: var(--yellow); transform: translateY(-2px); }
+
+/* ---------- ظاهر شدن هنگام اسکرول ---------- */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  * { animation: none !important; }
+}
+
+/* ---------- سکشن‌های مشترک ---------- */
+.section { position: relative; padding: 88px 0; overflow: hidden; }
+
+.section-head { text-align: center; max-width: 560px; margin: 0 auto 48px; }
+.section-kicker {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--yellow); font-size: .9rem; font-weight: 700;
+}
+.section-title { font-size: clamp(1.6rem, 3.6vw, 2.3rem); font-weight: 900; margin: 8px 0 10px; line-height: 1.5; }
+.section-sub { color: var(--text-dim); }
+
+@keyframes drift {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -18px; }
+}
+@media (max-width: 520px) { .section { padding: 64px 0; } }
+
+/* لینک‌های ارتباطی تا زمان ثبت اطلاعات واقعی فروشگاه فعال نمی‌شوند. */
+a.is-disabled,
+a[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+/* ============ باکس معرفی شعبه حضوری فانزی ============ */
+.branch-section { padding-block: 54px; }
+.branch-card {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: flex; align-items: flex-start; gap: 24px;
+  padding: clamp(22px, 4vw, 38px);
+  border: 1px solid rgba(255, 213, 36, .36); border-radius: 30px;
+  background: linear-gradient(120deg, rgba(85, 24, 93, .58), rgba(41, 8, 73, .72) 58%, rgba(255, 213, 36, .07));
+  box-shadow: 0 20px 55px rgba(0, 0, 0, .25), inset 0 1px 0 rgba(255,255,255,.07);
+}
+.branch-card::before {
+  content: ""; position: absolute; z-index: -1; inset-inline-end: -110px; top: -130px;
+  width: 310px; height: 310px; border-radius: 50%;
+  border: 1px solid rgba(255, 213, 36, .18);
+  box-shadow: 0 0 0 30px rgba(255,213,36,.025), 0 0 0 60px rgba(255,213,36,.018);
+}
+.branch-card-icon { flex: 0 0 68px; width: 68px; height: 68px; display: grid; place-items: center;
+  border-radius: 22px; color: var(--yellow); font-size: 2rem;
+  background: rgba(255, 213, 36, .12); border: 1px solid rgba(255, 213, 36, .3);
+}
+.branch-card-content { position: relative; z-index: 1; flex: 1; min-width: 0; }
+.branch-eyebrow { display: inline-flex; align-items: center; gap: 7px; color: var(--yellow); font-size: .85rem; font-weight: 800; }
+.branch-card-content h2 { margin: 5px 0 8px; font-size: clamp(1.35rem, 3vw, 1.9rem); font-weight: 900; line-height: 1.5; }
+.branch-intro { max-width: 760px; color: var(--text-dim); margin-bottom: 20px; }
+.branch-details { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(190px, .7fr); gap: 12px; }
+.branch-detail { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; min-width: 0;
+  border-radius: 16px; background: rgba(8, 3, 17, .28); border: 1px solid rgba(255,255,255,.08); }
+.branch-detail > i { flex: 0 0 auto; color: var(--yellow); font-size: 1.35rem; margin-top: 2px; }
+.branch-detail span { display: block; color: var(--text-dim); font-size: .78rem; margin-bottom: 3px; }
+.branch-detail address, .branch-detail b { color: var(--text); font-style: normal; font-weight: 700; line-height: 1.9; overflow-wrap: anywhere; }
+.branch-link { transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+.branch-link:hover { border-color: rgba(255,213,36,.4); background: rgba(255,213,36,.07); transform: translateY(-2px); }
+.branch-map-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; padding: 9px 15px;
+  color: var(--purple-deep); background: linear-gradient(135deg, var(--yellow), var(--yellow-deep));
+  border-radius: 999px; font-weight: 800; font-size: .88rem; transition: transform .2s ease, box-shadow .2s ease; }
+.branch-map-link:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(255,213,36,.2); }
+.branch-card-decoration { position: relative; z-index: 1; align-self: flex-start; color: rgba(255,213,36,.22); font-size: 2.5rem; transform: rotate(-10deg); }
+@media (max-width: 700px) {
+  .branch-section { padding-block: 38px; }
+  .branch-card { gap: 14px; padding: 20px 17px; border-radius: 23px; }
+  .branch-card-icon { flex-basis: 52px; width: 52px; height: 52px; border-radius: 17px; font-size: 1.6rem; }
+  .branch-card-decoration { display: none; }
+  .branch-details { grid-template-columns: 1fr; }
+  .branch-intro { font-size: .92rem; }
+  .branch-detail { padding: 12px; }
+  .branch-map-link { width: 100%; justify-content: center; }
+}

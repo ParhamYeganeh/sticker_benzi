@@ -1,0 +1,109 @@
+/* ============ هدر شیشه‌ای ============ */
+.site-header {
+  position: fixed; inset: 0 0 auto 0; z-index: 100;
+  height: var(--header-h);
+  display: flex; align-items: center;
+  background: rgba(13, 6, 22, .25);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid transparent;
+  transition: background .3s, border-color .3s, box-shadow .3s;
+}
+.site-header.scrolled {
+  background: var(--glass-strong);
+  border-bottom-color: var(--border);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, .35);
+}
+
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+
+/* لوگو */
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 1.15rem; }
+.brand img { width: 40px; height: 40px; transition: transform .4s var(--ease); }
+.brand:hover img { transform: rotate(-12deg) scale(1.1); }
+.brand span b { color: var(--yellow); }
+
+/* منو */
+.nav-list { display: flex; align-items: center; gap: 6px; }
+.nav-list a {
+  position: relative; display: flex; align-items: center; gap: 6px;
+  padding: 8px 14px; border-radius: 999px;
+  color: var(--text-dim); font-weight: 500; font-size: .95rem;
+  transition: color .25s, background .25s;
+}
+.nav-list a i { font-size: 1.1rem; }
+.nav-list a:hover, .nav-list a.active { color: var(--yellow); background: rgba(255, 213, 36, .08); }
+
+.header-actions { display: flex; align-items: center; gap: 10px; }
+
+/* دکمه همبرگری */
+.menu-toggle {
+  display: none; width: 42px; height: 42px; border-radius: 12px;
+  border: 1px solid var(--border); background: var(--glass);
+  font-size: 1.4rem; align-items: center; justify-content: center;
+  transition: border-color .25s, color .25s;
+}
+.menu-toggle:hover { border-color: var(--yellow); color: var(--yellow); }
+
+/* ---------- موبایل ---------- */
+@media (max-width: 860px) {
+  .menu-toggle { display: inline-flex; }
+  .header-actions .btn span { display: none; }
+  .header-actions .btn { padding: 10px 12px; }
+
+  .main-nav {
+    position: fixed; inset: var(--header-h) 12px auto 12px;
+    background: var(--glass-strong);
+    -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 12px;
+    opacity: 0; visibility: hidden; transform: translateY(-10px);
+    transition: opacity .25s, transform .25s var(--ease), visibility .25s;
+  }
+  .main-nav.open { opacity: 1; visibility: visible; transform: none; }
+  .nav-list { flex-direction: column; align-items: stretch; }
+  .nav-list a { padding: 12px 14px; border-radius: var(--radius-sm); }
+}
+
+
+/* دو مسیر ارتباطی کنار هم در هدر */
+.header-actions .btn { white-space: nowrap; }
+.header-actions .header-bale { border-color: var(--border-yellow); }
+.header-actions .header-bale i { color: var(--yellow); }
+@media (max-width: 1024px) and (min-width: 861px) {
+  .header-inner { gap: 10px; }
+  .nav-list a { padding-inline: 9px; font-size: .88rem; }
+  .header-actions { gap: 7px; }
+  .header-actions .btn { padding-inline: 12px; font-size: .86rem; }
+}
+
+@media (max-width: 520px) {
+  .header-actions { gap: 6px; }
+  .header-actions .btn { min-width: 40px; padding: 9px 10px; }
+  .header-actions .btn i { font-size: 1.15rem; }
+}
+
+/* وضوح بیشتر منوی همبرگری موبایل */
+@media (max-width: 860px) {
+  .main-nav {
+    background: rgba(24, 8, 40, 0.96);
+
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+
+    border-color: rgba(255, 255, 255, 0.16);
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+  }
+
+  .main-nav .nav-list a {
+    color: #f6f1ff;
+    font-weight: 600;
+  }
+
+  .main-nav .nav-list a:hover,
+  .main-nav .nav-list a.active {
+    color: var(--yellow);
+    background: rgba(255, 213, 36, 0.12);
+  }
+}

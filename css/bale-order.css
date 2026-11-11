@@ -1,0 +1,60 @@
+/* پنجره آماده‌سازی متن سفارش بله */
+.bale-order-backdrop {
+  position: fixed;
+  z-index: 260;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(8, 4, 14, .78);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  animation: bale-fade-in .18s ease-out;
+}
+.bale-order-dialog {
+  width: min(100%, 540px);
+  max-height: min(90svh, 720px);
+  overflow: auto;
+  padding: 22px;
+  border: 1px solid var(--border-yellow);
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(47, 19, 68, .98), rgba(21, 10, 33, .99));
+  box-shadow: 0 28px 90px rgba(0, 0, 0, .58), 0 0 40px rgba(255, 213, 36, .08);
+  animation: bale-dialog-in .22s ease-out;
+}
+.bale-order-header,
+.bale-order-heading,
+.bale-order-actions { display: flex; align-items: center; }
+.bale-order-header { justify-content: space-between; gap: 14px; margin-bottom: 14px; }
+.bale-order-heading { gap: 10px; color: var(--yellow); }
+.bale-order-heading > i { font-size: 1.5rem; }
+.bale-order-heading h2 { font-size: 1.12rem; font-weight: 900; }
+.bale-order-close {
+  width: 36px; height: 36px; flex: none; border: 1px solid var(--border);
+  border-radius: 11px; color: var(--text-dim); font-size: 1.5rem; line-height: 1;
+}
+.bale-order-close:hover { color: var(--yellow); border-color: var(--border-yellow); }
+.bale-order-instruction { margin-bottom: 12px; color: var(--text); font-size: .92rem; line-height: 1.9; }
+.bale-order-message {
+  display: block; width: 100%; min-height: 150px; resize: vertical; padding: 14px;
+  border: 1px solid var(--border); border-radius: 14px; outline: none;
+  background: rgba(8, 4, 14, .58); color: var(--text); font: inherit; font-size: .9rem;
+  line-height: 1.9; direction: rtl; text-align: right;
+}
+.bale-order-message:focus { border-color: var(--yellow); box-shadow: 0 0 0 3px rgba(255, 213, 36, .1); }
+.bale-order-note { margin-top: 10px; color: var(--text-dim); font-size: .78rem; line-height: 1.8; }
+.bale-order-status { min-height: 26px; margin-top: 8px; color: var(--yellow); font-size: .82rem; }
+.bale-order-status.is-success { color: #72d6a0; }
+.bale-order-actions { gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.bale-order-actions .btn { flex: 1 1 180px; }
+.bale-order-copy:disabled { opacity: .7; cursor: wait; }
+@keyframes bale-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes bale-dialog-in { from { opacity: 0; transform: translateY(12px) scale(.985); } to { opacity: 1; transform: none; } }
+@media (max-width: 520px) {
+  .bale-order-dialog { padding: 18px 14px; border-radius: 18px; }
+  .bale-order-actions { flex-direction: column; align-items: stretch; }
+  .bale-order-actions .btn { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bale-order-backdrop, .bale-order-dialog { animation: none; }
+}

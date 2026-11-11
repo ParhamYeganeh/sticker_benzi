@@ -1,0 +1,122 @@
+/* ============ سکشن نحوه سفارش ============ */
+/* اشکال مات پشت سکشن */
+.how-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.how-bg .shape { position: absolute; opacity: .12; animation: drift 16s ease-in-out infinite; }
+.how-bg .h1 { width: 260px; height: 260px; border-radius: 50%; background: var(--purple-glow); top: -80px; inset-inline-end: -60px; }
+.how-bg .h2 { width: 90px; height: 90px; border-radius: 24%; background: var(--yellow); bottom: 40px; inset-inline-start: 6%; transform: rotate(-16deg); animation-delay: -4s; }
+.how-bg .h3 { width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--yellow); bottom: -50px; inset-inline-end: 22%; animation-delay: -7s; }
+
+/* ---- مراحل ---- */
+.steps {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  counter-reset: step;
+}
+/* خط اتصال بین مراحل (دسکتاپ) */
+.steps::before {
+  content: ""; position: absolute; top: 52px; inset-inline: 12%;
+  border-top: 2px dashed rgba(255, 213, 36, .3); z-index: -1;
+}
+
+.step {
+  position: relative; text-align: center; padding: 34px 20px 26px;
+  background: var(--glass); border: 1px solid var(--border); border-radius: var(--radius);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  transition: transform .3s var(--ease), border-color .3s, box-shadow .3s;
+}
+.step:hover { transform: translateY(-6px); border-color: var(--border-yellow); box-shadow: 0 16px 36px rgba(0, 0, 0, .35), 0 0 0 1px rgba(255, 213, 36, .12); }
+
+.step-num {
+  position: absolute; top: -14px; inset-inline-start: 50%; translate: 50% 0;
+  min-width: 30px; height: 30px; padding-inline: 8px; display: grid; place-items: center;
+  border-radius: 999px; font-weight: 900; font-size: .85rem;
+  background: var(--yellow); color: var(--purple-deep);
+}
+[dir="rtl"] .step-num { translate: 50% 0; }
+
+.step-icon {
+  width: 68px; height: 68px; margin: 0 auto 16px; display: grid; place-items: center;
+  border-radius: 22px; font-size: 1.9rem; color: var(--yellow);
+  background: linear-gradient(145deg, rgba(85, 24, 93, .8), rgba(41, 8, 73, .8));
+  border: 1px solid var(--border-yellow);
+  transition: transform .35s var(--ease);
+}
+.step:hover .step-icon { transform: rotate(-8deg) scale(1.08); }
+
+.step h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 6px; }
+.step p { color: var(--text-dim); font-size: .9rem; }
+
+/* ---- دکمه پایین سکشن ---- */
+.how-cta { position: relative; z-index: 1; display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; text-align: center; margin-top: 40px; }
+.how-cta .btn { padding: 13px 28px; font-size: 1rem; }
+
+/* تأخیر ظاهر شدن پله‌ای */
+.steps .step:nth-child(2) { transition-delay: .08s; }
+.steps .step:nth-child(3) { transition-delay: .16s; }
+.steps .step:nth-child(4) { transition-delay: .24s; }
+
+@media (max-width: 960px) {
+  .steps { grid-template-columns: repeat(2, 1fr); }
+  .steps::before { display: none; }
+}
+@media (max-width: 520px) {
+  .section { padding: 64px 0; }
+  .steps { gap: 28px 12px; }
+  .step { padding: 30px 12px 20px; }
+  .step-icon { width: 56px; height: 56px; font-size: 1.5rem; border-radius: 18px; }
+  .step p { font-size: .82rem; }
+}
+
+/* کارت معرفی تحویل حضوری */
+.pickup-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  overflow: hidden;
+  margin-top: 32px;
+  padding: clamp(22px, 4vw, 34px);
+  border: 1px solid rgba(255, 213, 36, .28);
+  border-radius: 28px;
+  background: linear-gradient(115deg, rgba(255, 213, 36, .10), rgba(138, 63, 209, .12) 55%, rgba(255,255,255,.025));
+  box-shadow: 0 18px 48px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.pickup-card::before {
+  content: "";
+  position: absolute;
+  inset-inline-end: -70px;
+  top: -90px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,213,36,.17);
+  box-shadow: 0 0 0 24px rgba(255,213,36,.025), 0 0 0 48px rgba(255,213,36,.018);
+  pointer-events: none;
+}
+.pickup-card-icon {
+  flex: 0 0 76px;
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  border-radius: 24px;
+  color: var(--yellow);
+  font-size: 2.2rem;
+  background: linear-gradient(145deg, rgba(255,213,36,.16), rgba(138,63,209,.18));
+  border: 1px solid rgba(255,213,36,.3);
+  box-shadow: 0 10px 26px rgba(255,213,36,.08);
+}
+.pickup-card-content { position: relative; z-index: 1; flex: 1; }
+.pickup-eyebrow { display: inline-block; color: var(--yellow); font-size: .82rem; font-weight: 800; margin-bottom: 5px; }
+.pickup-card-content h3,
+.pickup-card-content h2 { margin: 0 0 8px; font-size: clamp(1.25rem, 2.5vw, 1.8rem); font-weight: 900; line-height: 1.5; }
+.pickup-card-content p { margin: 0; max-width: 760px; color: var(--text-dim); line-height: 2; }
+.pickup-card-spark { position: relative; z-index: 1; align-self: flex-start; color: rgba(255,213,36,.7); font-size: 2rem; transform: rotate(-12deg); }
+.pickup-card-home { margin-top: 34px; }
+.pickup-card-how { margin-top: 0; }
+@media (max-width: 600px) {
+  .pickup-card { align-items: flex-start; gap: 14px; padding: 20px 17px; border-radius: 22px; }
+  .pickup-card-icon { flex-basis: 54px; width: 54px; height: 54px; border-radius: 17px; font-size: 1.65rem; }
+  .pickup-card-spark { display: none; }
+  .pickup-card-content p { font-size: .92rem; line-height: 1.9; }
+}

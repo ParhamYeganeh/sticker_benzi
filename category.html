@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>محصولات | استیکر بنزی</title>
+    <meta
+      name="description"
+      content="مجموعه محصولات استیکر بنزی را ببینید؛ انواع استیکر با طرح‌های متنوع و امکان سفارش آسان از طریق پیام‌رسان‌ها."
+    />
+    <meta name="theme-color" content="#290849" />
+  <link rel="icon" type="image/png" sizes="64x64" href="img/favicon-64.png?v=3">
+  <link rel="alternate icon" type="image/svg+xml" href="img/logo.svg?v=3">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png?v=3">
+
+    <meta property="og:title" content="محصولات استیکر بنزی" />
+    <meta
+      property="og:description"
+      content="مجموعه محصولات استیکر بنزی را ببینید؛ انواع استیکر با طرح‌های متنوع و امکان سفارش آسان از طریق پیام‌رسان‌ها."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fa_IR" />
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/Vazirmatn-font-face.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    />
+
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/wholesale.css" />
+    <link rel="stylesheet" href="css/shop.css" />
+    <link rel="stylesheet" href="css/category.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="./css/demo.css">
+</head>
+  <body>
+  <div class="demo-ribbon">پیش‌نمایش آزمایشی استیکر بنزی · <a href="./admin/index.html">مشاهده پنل مدیریت</a></div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="index.html" class="brand" aria-label="استیکر بنزی" data-store-brand>
+          <img
+            src="./img/logo.webp"
+            alt="لوگوی استیکر بنزی"
+            width="40"
+            height="40"
+          />
+          <span data-store-name>استیکر <b>بنزی</b></span>
+        </a>
+
+        <nav class="main-nav" id="main-nav" aria-label="منوی اصلی">
+          <ul class="nav-list">
+            <li>
+              <a href="index.html"><i class="ri-home-5-line"></i>خانه</a>
+            </li>
+            <li>
+              <a href="category.html" class="active"
+                ><i class="ri-store-2-line"></i>فروشگاه</a
+              >
+            </li>
+            <li>
+              <a href="how.html"
+                ><i class="ri-shopping-bag-3-line"></i>نحوه سفارش</a
+              >
+            </li>
+            <li>
+              <a href="about.html"><i class="ri-information-line"></i>درباره ما</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a
+            href="#"
+            data-whatsapp
+            class="btn btn-yellow"
+            target="_blank"
+            rel="noopener"
+          >
+            <i class="ri-whatsapp-line"></i><span>سفارش در واتساپ</span>
+          </a>
+          <a
+            href="#"
+            data-bale
+            class="btn btn-ghost header-bale"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="ri-message-3-line"></i><span>سفارش در بله</span>
+          </a>
+          <button
+            class="menu-toggle"
+            aria-label="باز کردن منو"
+            aria-expanded="false"
+            aria-controls="main-nav"
+          >
+            <i class="ri-menu-line"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- ===== سکشن ۱: هدر صفحه دسته‌بندی (عنوان و جابه‌جایی بین دسته‌ها) ===== -->
+      <section class="page-hero cat-hero">
+        <div class="ph-bg" aria-hidden="true">
+          <span class="shape q1"></span><span class="shape q2"></span
+          ><span class="shape q3"></span>
+        </div>
+        <div class="container">
+          <nav class="breadcrumb" aria-label="مسیر صفحه">
+            <a href="index.html">خانه</a><i class="ri-arrow-left-s-line"></i>
+            <a href="index.html#shop">فروشگاه</a><i class="ri-arrow-left-s-line"></i>
+            <span id="cat-crumb">همه محصولات</span>
+          </nav>
+          <div class="ico" id="cat-icon" aria-hidden="true">
+            <i class="ri-apps-2-line"></i>
+          </div>
+          <h1 class="page-title" id="cat-title">همه محصولات</h1>
+          <p class="page-lead" id="cat-desc"></p>
+          <div
+            class="chips cat-switch"
+            id="cat-switch"
+            aria-label="دسته‌بندی‌ها"
+          ></div>
+        </div>
+      </section>
+
+      <!-- ===== سکشن ۲: جستجو و مرتب‌سازی ===== -->
+      <section class="cat-toolbar">
+        <div class="container">
+          <div class="glass toolbar">
+            <label class="search" for="cat-search">
+              <i class="ri-search-line" aria-hidden="true"></i>
+              <input
+                id="cat-search"
+                type="search"
+                placeholder="جستجوی استیکر..."
+                autocomplete="off"
+              />
+            </label>
+            <div class="sort">
+              <label for="cat-sort"
+                ><i class="ri-arrow-up-down-line" aria-hidden="true"></i>
+                مرتب‌سازی</label
+              >
+              <select id="cat-sort">
+                <option value="default">پیش‌فرض</option>
+                <option value="cheap">ارزان‌ترین</option>
+                <option value="expensive">گران‌ترین</option>
+              </select>
+            </div>
+          </div>
+          <p class="result-count" id="cat-count" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <!-- ===== سکشن ۳: گرید محصولات ===== -->
+      <section class="cat-grid">
+        <div class="container">
+          <div class="product-grid" id="product-grid" aria-live="polite"></div>
+          <div class="shop-more">
+            <nav class="pagination" id="product-pagination" aria-label="صفحه‌بندی محصولات" hidden></nav>
+          </div>
+        </div>
+      </section>
+    
+      <!-- Wholesale CTA -->
+      <section class="wholesale-section" aria-labelledby="wholesale-title">
+        <div class="container">
+          <div class="wholesale-card glass reveal">
+            <div class="wholesale-icon" aria-hidden="true"><i class="ri-store-3-line"></i></div>
+            <div class="wholesale-content">
+              <span class="wholesale-kicker"><i class="ri-price-tag-3-line"></i> خرید عمده</span>
+              <h2 id="wholesale-title">قصد خرید عمده داری؟</h2>
+              <p>برای خرید عمده‌ی محصولات استیکر بنزی و اطلاع از قیمت‌ها و شرایط همکاری، با ما تماس بگیر یا از طریق واتساپ و بله پیام بده. با کمال میل راهنمایی‌ات می‌کنیم.</p>
+              <div class="wholesale-actions">
+                <a class="btn btn-yellow" href="tel:+989127296209"><i class="ri-phone-line"></i> تماس برای قیمت عمده</a>
+                <a class="btn btn-ghost wholesale-whatsapp" href="#" data-whatsapp target="_blank" rel="noopener noreferrer"><i class="ri-whatsapp-line"></i> پیام در واتساپ</a>
+                <a class="btn btn-ghost wholesale-bale" href="#" data-bale target="_blank" rel="noopener noreferrer"><i class="ri-message-3-line"></i> پیام در بله</a>
+              </div>
+            </div>
+            <span class="wholesale-decoration" aria-hidden="true"><i class="ri-box-3-line"></i></span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="brand" aria-label="استیکر بنزی" data-store-brand>
+              <img
+                src="./img/logo.webp"
+                alt="لوگوی استیکر بنزی"
+                width="40"
+                height="40"
+                loading="lazy"
+              />
+              <span data-store-name>استیکر <b>بنزی</b></span>
+            </a>
+            <p>انواع استیکر بامزه و باکیفیت با سفارش آسان از طریق واتساپ و بله.</p>
+          </div>
+
+          <nav class="footer-col" aria-label="لینک‌های سریع">
+            <h3>دسترسی سریع</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="index.html"><i class="ri-arrow-left-s-line"></i>خانه</a>
+              </li>
+              <li>
+                <a href="category.html"
+                  ><i class="ri-arrow-left-s-line"></i>فروشگاه</a
+                >
+              </li>
+              <li>
+                <a href="how.html"
+                  ><i class="ri-arrow-left-s-line"></i>نحوه سفارش</a
+                >
+              </li>
+              <li>
+                <a href="about.html"
+                  ><i class="ri-arrow-left-s-line"></i>درباره ما</a
+                >
+              </li>
+            </ul>
+          </nav>
+
+          <div class="footer-col">
+            <h3>ارتباط با ما</h3>
+            <div class="contact-list">
+              <a
+                href="#"
+                data-whatsapp
+                class="contact-btn"
+                target="_blank"
+                rel="noopener"
+              >
+                <i class="ri-whatsapp-line"></i>
+                <span><small>سفارش و پشتیبانی</small><b>واتساپ</b></span>
+              </a>
+              <a
+                href="#"
+                data-bale
+                class="contact-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="ri-message-3-line"></i>
+                <span><small>سفارش و پشتیبانی</small><b>بله</b></span>
+              </a>
+              
+              <a
+                href="#"
+                data-instagram
+                class="contact-btn"
+                target="_blank"
+                rel="noopener"
+              >
+                <i class="ri-instagram-line"></i>
+                <span><small>طرح‌های جدید</small><b>اینستاگرام</b></span>
+              </a>
+              <a href="tel:+989127296209" class="contact-btn footer-phone" dir="ltr">
+                <i class="ri-phone-line"></i>
+                <span dir="rtl"><small>تماس مستقیم</small><b>۰۹۱۲۷۲۹۶۲۰۹</b></span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span
+            >© <span id="year">۱۴۰۵</span> <span data-store-name-copy>استیکر بنزی</span>. تمامی حقوق محفوظ
+            است.</span
+          >
+          <span
+            >ساخته‌شده با
+            <i class="ri-heart-3-fill" style="color: var(--yellow)"></i
+          ></span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./js/demo-data.js"></script>
+    <script src="./js/demo-api.js"></script>
+    <script src="./js/analytics.js" defer></script>
+    <script src="./js/main.js" defer></script>
+    <script src="./js/store-data.js" defer></script>
+    <script src="./js/card.js" defer></script>
+    <script src="./js/category.js" defer></script>
+  </body>
+</html>

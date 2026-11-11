@@ -1,0 +1,49 @@
+/* ============ صفحه دسته‌بندی: نوار جستجو و گرید ============ */
+
+/* ---- نوار جستجو و مرتب‌سازی ---- */
+.cat-toolbar { padding: 8px 0 0; position: relative; z-index: 1; }
+.toolbar { display: flex; gap: 14px; align-items: center; padding: 12px 14px; }
+.toolbar .search { position: relative; flex: 1; display: block; }
+.toolbar .search i {
+  position: absolute; inset-block: 0; inset-inline-start: 14px; display: grid; place-items: center;
+  color: var(--text-dim); font-size: 1.15rem; pointer-events: none;
+}
+
+.toolbar input, .toolbar select {
+  -webkit-appearance: none; appearance: none;
+  font: inherit; font-size: .95rem; color: var(--text); width: 100%;
+  padding: 11px 14px; border-radius: var(--radius-sm);
+  background-color: rgba(255, 255, 255, .06); border: 1px solid var(--border);
+  transition: border-color .25s, box-shadow .25s, background-color .25s;
+}
+.toolbar input { padding-inline-start: 42px; }
+.toolbar input::placeholder { color: var(--text-dim); opacity: .8; }
+.toolbar input::-webkit-search-cancel-button { -webkit-appearance: none; }
+
+/* فلش سفارشی برای لیست مرتب‌سازی */
+.toolbar select {
+  cursor: pointer; width: auto; min-width: 150px; padding-inline-start: 38px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23FFD524' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat: no-repeat; background-position: left 14px center;
+}
+.toolbar select option { background: #160a26; color: #f6f1ff; }
+
+.toolbar input:hover, .toolbar select:hover { border-color: var(--border-yellow); }
+.toolbar input:focus, .toolbar select:focus {
+  outline: none; border-color: var(--yellow); background-color: rgba(255, 213, 36, .06);
+  box-shadow: 0 0 0 3px rgba(255, 213, 36, .15);
+}
+
+.toolbar .sort { display: flex; align-items: center; gap: 8px; flex: none; }
+.toolbar .sort label { color: var(--text-dim); font-size: .88rem; white-space: nowrap; }
+.result-count { margin: 14px 4px 0; color: var(--text-dim); font-size: .9rem; min-height: 1.6em; }
+
+/* ---- گرید محصولات (کارت‌ها از shop.css) ---- */
+.cat-grid { padding: 24px 0 56px; position: relative; z-index: 1; }
+
+@media (max-width: 640px) {
+  .toolbar { flex-direction: column; align-items: stretch; gap: 10px; }
+  .toolbar .sort { justify-content: space-between; }
+  .toolbar .sort select { flex: 1; }
+  .cat-grid { padding-bottom: 40px; }
+}

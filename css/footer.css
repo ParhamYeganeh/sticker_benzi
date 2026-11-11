@@ -1,0 +1,58 @@
+/* ============ فوتر ============ */
+.site-footer {
+  position: relative; overflow: hidden;
+  margin-top: 40px; padding: 56px 0 24px;
+  background: linear-gradient(180deg, transparent, rgba(41, 8, 73, .55));
+  border-top: 1px solid var(--border);
+}
+.site-footer::before {
+  content: ""; position: absolute; top: -140px; inset-inline-end: -80px;
+  width: 300px; height: 300px; border-radius: 50%;
+  background: var(--purple-glow); opacity: .1; pointer-events: none;
+}
+
+.footer-grid {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1.4fr 1fr 1.2fr; gap: 40px;
+}
+
+.footer-brand .brand { margin-bottom: 12px; }
+.footer-brand p { color: var(--text-dim); font-size: .92rem; max-width: 340px; }
+
+.footer-col h3 { font-size: 1rem; font-weight: 800; margin-bottom: 14px; color: var(--yellow); }
+.footer-links li + li { margin-top: 8px; }
+.footer-links a {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--text-dim); font-size: .92rem; transition: color .25s, transform .25s var(--ease);
+}
+.footer-links a:hover { color: var(--yellow); transform: translateX(-4px); }
+
+/* راه‌های ارتباطی */
+.contact-list { display: grid; gap: 10px; }
+.contact-btn {
+  display: flex; align-items: center; gap: 12px; padding: 10px 14px;
+  border-radius: var(--radius-sm); background: var(--glass); border: 1px solid var(--border);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  transition: transform .25s var(--ease), border-color .25s, background .25s;
+}
+.contact-btn i { font-size: 1.4rem; color: var(--yellow); }
+.contact-btn small { display: block; color: var(--text-dim); font-size: .75rem; line-height: 1.4; }
+.contact-btn b { font-size: .92rem; line-height: 1.4; }
+.contact-btn:hover { transform: translateY(-3px); border-color: var(--yellow); background: rgba(255, 213, 36, .08); }
+
+.footer-bottom {
+  position: relative; z-index: 1;
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px;
+  margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border);
+  color: var(--text-dim); font-size: .85rem;
+}
+
+@media (max-width: 860px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 520px) {
+  .site-footer { padding-top: 44px; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { justify-content: center; text-align: center; }
+}

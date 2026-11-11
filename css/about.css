@@ -1,0 +1,61 @@
+/* ============ سکشن درباره ما ============ */
+.about-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.about-bg .shape { position: absolute; opacity: .12; animation: drift 15s ease-in-out infinite; }
+.about-bg .a1 { width: 300px; height: 300px; border-radius: 50%; background: var(--purple-glow); bottom: -120px; inset-inline-start: -80px; }
+.about-bg .a2 { width: 80px; height: 80px; border-radius: 24%; background: var(--yellow); top: 60px; inset-inline-end: 8%; transform: rotate(20deg); animation-delay: -5s; }
+.about-bg .a3 { width: 130px; height: 44px; border-radius: 999px; background: var(--purple-glow); top: 30%; inset-inline-start: 3%; transform: rotate(-20deg); animation-delay: -8s; }
+
+.about-inner {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: center;
+}
+
+/* کارت لوگو */
+.about-visual {
+  position: relative; aspect-ratio: 1; max-width: 360px; width: 100%; margin-inline: auto;
+  display: grid; place-items: center; border-radius: 32px;
+  background: linear-gradient(145deg, rgba(85, 24, 93, .6), rgba(41, 8, 73, .6));
+  border: 1px solid var(--border-yellow);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .4), inset 0 1px 0 rgba(255, 255, 255, .15);
+}
+.about-visual::before {
+  content: ""; position: absolute; inset: -14px; border-radius: 40px;
+  border: 1px dashed rgba(255, 213, 36, .3); pointer-events: none;
+}
+.about-visual img {
+  width: 52%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 24px rgba(255, 213, 36, .25));
+  transition: transform .5s var(--ease);
+}
+.about-visual:hover img { transform: rotate(-10deg) scale(1.06); }
+
+/* متن */
+.about-text .section-title { margin-top: 8px; }
+.about-text p { color: var(--text-dim); margin-bottom: 14px; max-width: 560px; }
+
+.about-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 26px; }
+.point {
+  padding: 18px 14px; text-align: center; border-radius: var(--radius);
+  background: var(--glass); border: 1px solid var(--border);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  transition: transform .3s var(--ease), border-color .3s;
+}
+.point:hover { transform: translateY(-5px); border-color: var(--border-yellow); }
+.point i { font-size: 1.7rem; color: var(--yellow); display: block; margin-bottom: 6px; }
+.point b { display: block; font-size: .95rem; margin-bottom: 2px; }
+.point span { color: var(--text-dim); font-size: .82rem; line-height: 1.6; display: block; }
+
+@media (max-width: 860px) {
+  .about-inner { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+  .about-visual { max-width: 240px; }
+  .about-text p { margin-inline: auto; }
+}
+@media (max-width: 520px) {
+  .about-points { grid-template-columns: 1fr; }
+}
+
+
